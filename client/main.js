@@ -17,7 +17,7 @@ $(document).ready(function() {
   }
 
   function addQuote(quote){
-    $.post('http://localhost:3000/quote/', quote, (data, status) => {
+    $.post('http://localhost:3000/quote/', { "quote": quote } , (data, status) => {
       console.log(data);
     })
   }
