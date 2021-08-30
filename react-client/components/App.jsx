@@ -1,6 +1,6 @@
 import React from 'react';
 const axios = require('axios');
-import AddQuote from 'AddQuote.jsx'
+import AddQuote from './AddQuote.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -8,7 +8,6 @@ class App extends React.Component {
     this.state = {
       quote: 'This is state'
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -19,10 +18,6 @@ class App extends React.Component {
       })
       .catch(err => console.log(err))
   };
-
-  handleSubmit () {
-
-  }
 
   render() {
     return (

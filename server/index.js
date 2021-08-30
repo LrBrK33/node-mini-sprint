@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 app.use(express.json());
+app.use(cors())
 const port = 3000;
 
 //headers to allows CORS requests
@@ -8,11 +10,10 @@ const headers = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
   "access-control-allow-headers": "content-type, accept",
-  "access-control-max-age": 10
+  "access-control-max-age": 10,
 };
 
-
-// TODO: Fill with strings of your favorite quotes :)
+// Fill with strings of your favorite quotes :)
 const quotes = [
   'Face your fears. Live your dreams.',
   'You miss every shot you don\'t take.',
@@ -46,6 +47,7 @@ app.get('/quote/', (req, res) => {
 
 app.post('/quote/', (req, res) => {
     var newQuote = req.body.quote;
+    //console.log(req.body)
     quotes.push(newQuote);
     res.status(200).header(headers).send('Successfully added quote')
 })
