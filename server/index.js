@@ -16,7 +16,7 @@ const quotes = [
   'You miss every shot you don\'t take.',
   'Be the change that you wish to see in the world',
   'Problems are not stop signs, they are guidelines.',
-  'The harder I work, the more luck I seem to have.'
+  'The harder I work, the more luck I seem to have.',
 ];
 
 //Utility Function to return a random integer
@@ -31,7 +31,6 @@ function getRandomQuote() {
   var quote = quotes[getRandomInt(0, quotes.length)]
   return quote;
 }
-console.log(getRandomQuote());
 
 const handleRequest = function(req, res) {
   console.log(`Endpoint: ${req.url} Method: ${req.method}`);
@@ -43,21 +42,31 @@ const handleRequest = function(req, res) {
     res.end();
   }
 
-  // TODO: GET ONE
+  // GET ONE
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
     var quote = JSON.stringify(getRandomQuote());
     res.writeHead(201);
     res.end(quote)
   }
-  // TODO: POST/CREATE
-  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "FILL ME IN") {
-    //YOUR CODE HERE
+  // POST/CREATE
+  else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
+    var newQuote = ''
+    console.log(newQuote)
+    req.on('data', chunk => {
+      newQuote += chunk.toString();
+      quotes.push(newQuote);
+    });
+    req.on('end', () => {
+      res.writeHead(200);
+      res.end('Successfully add quote');
+    })
+
   }
 
 //CATCH ALL ROUTE
   else {
     res.writeHead(404,headers);
-    res.end('Page not found');
+    res.end('Page/End Point not found');
 
   }
 }

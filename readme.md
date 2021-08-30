@@ -20,7 +20,7 @@ Open 2 terminal windows.
 ---
 ## Step 1: Raw Node
 
-- [ ] Finish out the routing for the existing server to handle incoming client requests 
+- [ ] Finish out the routing for the existing server to handle incoming client requests
 
 ### Client/Server Communications
   The client will communicate with your server via jQuery's AJAX. For your convenience the jQuery script is in the index.html file already.
