@@ -11,14 +11,15 @@ $(document).ready(function() {
   });
 
   function getQuote(){
-
-    //YOUR CODE HERE, Add a GET request
+    $.get('http://localhost:3000/quote/', (data, status) => {
+      //console.log(data);
+    document.getElementById('quote').innerHTML = data;
+    })
 
   }
 
   function addQuote(quote){
-    
-    //YOUR CODE HERE, Add a POST request
+    // $.post('http://localhost:3000/quote/', )
 
   }
 });
