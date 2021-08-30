@@ -12,14 +12,13 @@ $(document).ready(function() {
 
   function getQuote(){
     $.get('http://localhost:3000/quote/', (data, status) => {
-      //console.log(data);
     document.getElementById('quote').innerHTML = data;
     })
-
   }
 
   function addQuote(quote){
-    // $.post('http://localhost:3000/quote/', )
-
+    $.post('http://localhost:3000/quote/', quote, (data, status) => {
+      console.log(data);
+    })
   }
 });

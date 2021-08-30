@@ -45,7 +45,7 @@ const handleRequest = function(req, res) {
 
   // GET ONE
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
-    var quote = JSON.stringify(getRandomQuote());
+    var quote = getRandomQuote();
     res.writeHead(201, headers);
     res.end(quote)
   }
@@ -59,7 +59,7 @@ const handleRequest = function(req, res) {
     });
     req.on('end', () => {
       res.writeHead(200, headers);
-      res.end('Successfully add quote');
+      res.end('Successfully added quote');
     })
 
   }

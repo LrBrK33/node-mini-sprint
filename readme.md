@@ -20,7 +20,7 @@ Open 2 terminal windows.
 ---
 ## Step 1: Raw Node
 
-- [ ] Finish out the routing for the existing server to handle incoming client requests
+- [X] Finish out the routing for the existing server to handle incoming client requests
 
 ### Client/Server Communications
   The client will communicate with your server via jQuery's AJAX. For your convenience the jQuery script is in the index.html file already.
@@ -29,13 +29,22 @@ Open 2 terminal windows.
 
 ### Focus on understanding the following:
 - What is the difference between the client and the server?
+  the client displays info to the user and takes in user input. The server responds to the input as directed.
 - What is the request/response cycle?
+  requests are sent from the client and interpreted by the server, the response in then sent back to the client to act on
 - What is CORS and how do you prevent CORS errors?
+  CORS allows the server to communicate to the client without special permission because it is returning to the origin
+  CORS errors are prevented by returning required headers in the response
 - What are http verbs? When are they used?
+  http verbs are used to CRUD, they are used to make requests to the server
 - What are http status codes and how do you respond with them?
+  status codes
 - What is an endpoint and where do you see it?
+  the endpoint is where the requests are pointed, the are on the end of the url
 - What tools can you use to test your server?
+  Postman, terminal
 - Where do you see your server console.logs?
+  In terminal running server
 - **What parts of your code are asynchronous and how will you handle that?**
 
 ---
