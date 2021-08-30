@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  vertical-align: middle;
+  background: lightblue;
+}
+
+h1 {
+  font-family: 'verdana';
+}
+
+h2 {
+  font-family: 'Snell Roundhand';
+}

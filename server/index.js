@@ -4,6 +4,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors())
 const port = 3000;
+app.use(express.static('../react-client/dist'))
 
 //headers to allows CORS requests
 const headers = {
@@ -37,7 +38,7 @@ function getRandomQuote() {
 
 app.get('/', (req, res) => {
   console.log('redirecting');
-  res.status(301).redirect(`http://localhost:${port}/quote`).send() //redirect to quote
+  res.status(301).redirect(`http://localhost:${port}/index.html`).send() //redirect to quote
 });
 
 app.get('/quote/', (req, res) => {
@@ -47,7 +48,6 @@ app.get('/quote/', (req, res) => {
 
 app.post('/quote/', (req, res) => {
     var newQuote = req.body.quote;
-    //console.log(req.body)
     quotes.push(newQuote);
     res.status(200).header(headers).send('Successfully added quote')
 })

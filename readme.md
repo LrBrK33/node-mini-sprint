@@ -59,9 +59,9 @@ Note: Use the [Express documentation](https://expressjs.com/) as your primary re
 ## Step 3: Converting to React
 
 - [X] Check out a new branch `react-client`
-- [ ] In the `react-client` directory, build out a refactored version of the original frontend in React
-- [ ] Serve up your React client from your Express server using `express.static`
-- [ ] (Optional) Refactor your jQuery's AJAX client requests to use [Axios](https://www.npmjs.com/package/axios)
+- [X] In the `react-client` directory, build out a refactored version of the original frontend in React
+- [X] Serve up your React client from your Express server using `express.static`
+- [X] (Optional) Refactor your jQuery's AJAX client requests to use [Axios](https://www.npmjs.com/package/axios)
 
 The dependencies for React have been set up in the `react-client` directory.  To begin transpiling the code, run `npm run build` in your client terminal.
 
