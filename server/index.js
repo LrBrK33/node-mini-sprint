@@ -12,11 +12,11 @@ const port = 3000;
 
 // TODO: Fill with strings of your favorite quotes :)
 const quotes = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five'
+  'Face your fears. Live your dreams.',
+  'You miss every shot you don\'t take.',
+  'Be the change that you wish to see in the world',
+  'Problems are not stop signs, they are guidelines.',
+  'The harder I work, the more luck I seem to have.'
 ];
 
 //Utility Function to return a random integer
@@ -25,6 +25,13 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
+
+function getRandomQuote() {
+  // use getRandomInt to pick number between 0 and quotes length
+  var quote = quotes[getRandomInt(0, quotes.length)]
+  return quote;
+}
+console.log(getRandomQuote());
 
 const handleRequest = function(req, res) {
   console.log(`Endpoint: ${req.url} Method: ${req.method}`);
@@ -37,9 +44,10 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: GET ONE
-  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "FILL ME IN") {
-    //YOUR CODE HERE
-
+  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
+    var quote = JSON.stringify(getRandomQuote());
+    res.writeHead(201);
+    res.end(quote)
   }
   // TODO: POST/CREATE
   else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "FILL ME IN") {
