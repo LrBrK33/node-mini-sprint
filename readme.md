@@ -7,7 +7,7 @@ This repo contains a client directory and a server directory. While it is all in
 Open 2 terminal windows.
 
 * In one terminal window open the client directory and do the following:
-  - run [live-server](https://www.npmjs.com/package/live-server). This is serving your client files. If you open your index.html from Finder (e.g. you are seeing `file:///` in the URL bar) you will run into CORS issues. Use live-server.
+  - run [live-server](https://www.npmjs.com/package/live-server). This is serving your client files. If you open your index.html from Finder (e.g. you are seeing `file:///` in the URL bar) you will run into CORS issues. Use live-serveer.
   - Your client will run, but it does not communicate with the server yet. You need to write the appropriate code.
 
 * In the other terminal window open the server directory and do the following:
@@ -50,7 +50,7 @@ Open 2 terminal windows.
 ---
 
 ## Step 2: Refactor to Express
-- [ ] Check out a new branch `express-server`
+- [X] Check out a new branch `express-server`
 - [ ] Refactor your existing server from http to Express.js
 
 Note: Use the [Express documentation](https://expressjs.com/) as your primary resource for this.
