@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const db = require('./db')
 app.use(express.json());
 app.use(cors())
 const port = 3000;
@@ -15,13 +16,13 @@ const headers = {
 };
 
 // Fill with strings of your favorite quotes :)
-const quotes = [
-  'Face your fears. Live your dreams.',
-  'You miss every shot you don\'t take.',
-  'Be the change that you wish to see in the world',
-  'Problems are not stop signs, they are guidelines.',
-  'The harder I work, the more luck I seem to have.',
-];
+// const quotes = [
+//   'Face your fears. Live your dreams.',
+//   'You miss every shot you don\'t take.',
+//   'Be the change that you wish to see in the world',
+//   'Problems are not stop signs, they are guidelines.',
+//   'The harder I work, the more luck I seem to have.',
+// ];
 
 //Utility Function to return a random integer
 function getRandomInt(min, max) {
@@ -30,20 +31,23 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-function getRandomQuote() {
+function getRandomQuote(quoteArray) {
+  // input will be the quote array from getQuote db query
   // use getRandomInt to pick number between 0 and quotes length
-  var quote = quotes[getRandomInt(0, quotes.length)]
+  var quote = quoteArray[getRandomInt(0, quoteArray.length)].quote
   return quote;
 }
 
 app.get('/', (req, res) => {
   console.log('redirecting');
-  res.status(301).redirect(`http://localhost:${port}/index.html`).send() //redirect to quote
+  res.status(301).send()
 });
 
 app.get('/quote/', (req, res) => {
-  var quote = getRandomQuote();
-  res.status(201).header(headers).send(quote);
+  db.getQuote((results) => {
+    var quote = getRandomQuote(results);
+    res.status(201).header(headers).send(quote);
+  })
 });
 
 app.post('/quote/', (req, res) => {
