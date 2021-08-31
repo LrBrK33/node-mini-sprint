@@ -15,15 +15,6 @@ const headers = {
   "access-control-max-age": 10,
 };
 
-// Fill with strings of your favorite quotes :)
-// const quotes = [
-//   'Face your fears. Live your dreams.',
-//   'You miss every shot you don\'t take.',
-//   'Be the change that you wish to see in the world',
-//   'Problems are not stop signs, they are guidelines.',
-//   'The harder I work, the more luck I seem to have.',
-// ];
-
 //Utility Function to return a random integer
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -51,8 +42,10 @@ app.get('/quote/', (req, res) => {
 });
 
 app.post('/quote/', (req, res) => {
-    var newQuote = req.body.quote;
-    quotes.push(newQuote);
+    var newQuote = [Object.values(req.body)]; //Object.values creates an array with object's values
+    console.log('the quote', newQuote);
+    db.addQuote(newQuote)
+    console.log('post query sent')
     res.status(200).header(headers).send('Successfully added quote')
 })
 

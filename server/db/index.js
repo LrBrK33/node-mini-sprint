@@ -24,17 +24,12 @@ const getQuote = (callback) => {
 }
 
 const addQuote = (params, callback) => {
-  var queryString = 'INSERT INTO quotes (quote) VALUES (?)'
+  console.log('these are params', params)
+  var queryString = "INSERT INTO quotes (quote) VALUES (?)";
 
-  connection.query(queryString, (err, res) => {
-    if (err) {
-      console.log('error adding quote to db', error);
-      callback(err, null);
-    } else {
-      callback(null, res);
-    }
-  })
+  connection.query(queryString, params)
 }
 
 exports.connection = connection;
 exports.getQuote = getQuote;
+exports.addQuote = addQuote;

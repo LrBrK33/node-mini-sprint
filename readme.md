@@ -72,7 +72,7 @@ Note: Use the [React documentation](https://reactjs.org/docs/getting-started.htm
 
 - [X] Check out a new branch `add-mysql`
 - [X] Design a `schema.sql` for storing the existing application data
-- [ ] Add data persistence to the information being stored in your backend (refactor the Express server as needed)
+- [X] Add data persistence to the information being stored in your backend (refactor the Express server as needed)
 
 Note: use the [MySQL](https://dev.mysql.com/doc/refman/8.0/en/) and [mysqljs](https://www.npmjs.com/package/mysql) documentation as your primary resources for this.
 
