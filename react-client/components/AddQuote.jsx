@@ -20,6 +20,7 @@ class AddQuote extends React.Component {
     event.preventDefault();
     console.log('clicked');
     var sendQuote = JSON.stringify({ quote: this.state.value })
+    this.setState({ value: '' })
     var config = { "headers": {
       'Content-Type': 'application/json'
       }}
@@ -31,6 +32,7 @@ class AddQuote extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+
   }
 
   render() {

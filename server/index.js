@@ -42,60 +42,18 @@ app.get('/quote/', (req, res) => {
 });
 
 app.post('/quote/', (req, res) => {
-    var newQuote = [Object.values(req.body)]; //Object.values creates an array with object's values
+    var newQuote = Object.values(req.body); //Object.values creates an array with object's values
     console.log('the quote', newQuote);
     db.addQuote(newQuote)
-    console.log('post query sent')
     res.status(200).header(headers).send('Successfully added quote')
+})
+
+app.delete('/quote/', (req, res) => {
+  var quote = Object.values(req.body);
+  db.deleteQuote(quote)
+  res.status(200).header(headers).send('Successfully deleted quote')
 })
 
 app.listen(port, ()=> {
   console.log(`Listening at http://localhost:${port}`)
 });
-
-
-// const handleRequest = function(req, res) {
-//   console.log(`Endpoint: ${req.url} Method: ${req.method}`);
-
-//   // redirect users to /quote if they try to hit the homepage. This should already work, no changes needed
-//   if (req.url == '/') {
-//     console.log('redirecting');
-//     res.writeHead(301, {...headers, Location: `http://localhost:${port}/quote`}) //redirect to quote
-//     res.end();
-//   }
-
-//   // GET ONE
-//   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
-//     var quote = getRandomQuote();
-//     res.writeHead(201, headers);
-//     res.end(quote)
-//   }
-
-//   // POST/CREATE
-//   else if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST") {
-//     var newQuote = ''
-//     console.log(newQuote)
-//     req.on('data', chunk => {
-//       newQuote += chunk.toString();
-//       quotes.push(newQuote);
-//     });
-//     req.on('end', () => {
-//       res.writeHead(200, headers);
-//       res.end('Successfully added quote');
-//     })
-
-//   }
-
-// //CATCH ALL ROUTE
-//   else {
-//     res.writeHead(404,headers);
-//     res.end('Page/End Point not found');
-
-//   }
-// }
-
-// const server = http.createServer(handleRequest);
-// server.listen(port);
-
-// console.log('Server is running in the terminal!');
-// console.log(`Listening on http://localhost:${port}`);

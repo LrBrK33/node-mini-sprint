@@ -26,10 +26,15 @@ const getQuote = (callback) => {
 const addQuote = (params, callback) => {
   console.log('these are params', params)
   var queryString = "INSERT INTO quotes (quote) VALUES (?)";
+  connection.query(queryString, params);
+}
 
-  connection.query(queryString, params)
+const deleteQuote = (params, callback) => {
+  var queryString = "DELETE FROM quotes WHERE quote = (?)"
+  connection.query(queryString, params);
 }
 
 exports.connection = connection;
 exports.getQuote = getQuote;
 exports.addQuote = addQuote;
+exports.deleteQuote = deleteQuote;

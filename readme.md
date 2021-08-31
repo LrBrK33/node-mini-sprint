@@ -79,7 +79,7 @@ Note: use the [MySQL](https://dev.mysql.com/doc/refman/8.0/en/) and [mysqljs](ht
 ---
 ## Step 5: Full CRUD
 
-- [ ] Check out a final branch `full-crud`
+- [X] Check out a final branch `full-crud`
 - [ ] Expand the functionality of your React frontend until it sends at least one request of each CRUD category
 - [ ] Build out server routing to handle those requests
 - [ ] Refactor your persistence layer as-needed to support these new routes
