@@ -42,16 +42,22 @@ app.get('/quote/', (req, res) => {
 });
 
 app.post('/quote/', (req, res) => {
-    var newQuote = Object.values(req.body); //Object.values creates an array with object's values
-    console.log('the quote', newQuote);
-    db.addQuote(newQuote)
+    var params = Object.values(req.body); //Object.values creates an array with object's values
+    db.addQuote(params)
     res.status(200).header(headers).send('Successfully added quote')
 })
 
 app.delete('/quote/', (req, res) => {
-  var quote = Object.values(req.body);
-  db.deleteQuote(quote)
+  var params = Object.values(req.body);
+  db.deleteQuote(params)
   res.status(200).header(headers).send('Successfully deleted quote')
+})
+
+app.put('/quote/', (req, res) => {
+  var params = Object.values(req.body);
+  console.log('edit params', req.body);
+  db.editQuote(params);
+  res.status(200).header(headers).send('Successfully edited quote');
 })
 
 app.listen(port, ()=> {

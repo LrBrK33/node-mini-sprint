@@ -7,6 +7,7 @@ export default class RandomQuote extends React.Component {
     this.state = {
       currentQuote: this.props.quote,
     }
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDelete() {
@@ -21,8 +22,7 @@ export default class RandomQuote extends React.Component {
     return (
       <>
       <h2 id="quote">{this.props.quote}</h2>
-      <input type="submit" value="Edit" />
-      <input type="submit" value="Delete" onClick={() => this.handleDelete()}/>
+      <input type="submit" value="Delete This Quote" onClick={() => this.handleDelete() }/>
       </>
     )
   }

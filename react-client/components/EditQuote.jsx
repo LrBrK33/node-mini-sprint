@@ -1,9 +1,10 @@
 import React from 'react';
 const axios = require('axios');
 
-class AddQuote extends React.Component {
-  constructor () {
-    super()
+export default class EditQuote extends React.Component {
+  constructor (props) {
+    super(props)
+    console.log(props);
     this.state = {
       quote: '',
     };
@@ -12,22 +13,21 @@ class AddQuote extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({quote: e.target.value})
+    this.setState({ quote: e.target.value})
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    var sendQuote = JSON.stringify({ quote: this.state.quote })
+    var sendQuote = { editedQuote: this.state.quote, currentQuote: this.props.quote
+    }
     this.setState({ quote: '' })
-
-    axios.post('http://localhost:3000/quote/', sendQuote)
+    axios.put('http://localhost:3000/quote/', sendQuote)
       .then(function (response) {
         console.log('axios response', response);
     })
     .catch(function (error) {
       console.log(error);
     });
-
   }
 
   render() {
@@ -37,11 +37,9 @@ class AddQuote extends React.Component {
         <label>
           <input type="text" value={this.state.quote} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit New Quote" />
+        <input type="submit" value="Submit Edit" />
       </form>
       </div>
     )
   };
 };
-
-export default AddQuote;

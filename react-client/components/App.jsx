@@ -1,13 +1,14 @@
 import React from 'react';
 const axios = require('axios');
 import AddQuote from './AddQuote.jsx';
+import EditQuote from './EditQuote.jsx'
 import RandomQuote from './RandomQuote.jsx';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      quote: 'This is state'
+      quote: ''
     }
     this.handleQuoteGeneration = this.handleQuoteGeneration.bind(this);
   }
@@ -29,6 +30,7 @@ class App extends React.Component {
         <h1>Random Quote Generator</h1>
         <input type="submit" value="Generate Random Quote" onClick={()=> this.handleQuoteGeneration()} />
         <RandomQuote quote={this.state.quote} handleQuoteGeneration={this.handleQuoteGeneration} />
+        <EditQuote quote={this.state.quote} handleQuoteGeneration={this.handleQuoteGeneration} />
         <AddQuote />
       </div>
     )

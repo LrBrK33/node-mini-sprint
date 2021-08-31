@@ -9,7 +9,6 @@ connection = mysql.createConnection({
 
 connection.connect();
 
-
 // queries can go here
 const getQuote = (callback) => {
   var queryString = 'SELECT quote FROM quotes'
@@ -27,14 +26,20 @@ const addQuote = (params, callback) => {
   console.log('these are params', params)
   var queryString = "INSERT INTO quotes (quote) VALUES (?)";
   connection.query(queryString, params);
-}
+};
 
 const deleteQuote = (params, callback) => {
-  var queryString = "DELETE FROM quotes WHERE quote = (?)"
+  var queryString = "DELETE FROM quotes WHERE quote = (?)";
   connection.query(queryString, params);
-}
+};
+
+const editQuote = (params, callback) => {
+  var queryString = "UPDATE quotes SET quote = (?) WHERE quote = (?)";
+  connection.query(queryString, params);
+};
 
 exports.connection = connection;
 exports.getQuote = getQuote;
 exports.addQuote = addQuote;
 exports.deleteQuote = deleteQuote;
+exports.editQuote = editQuote;
